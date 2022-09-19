@@ -22,4 +22,14 @@ public class StringTest {
         assertThat(result).contains("1");
         assertThat(result).containsExactly(expected);
     }
+
+    @Test
+    @DisplayName("() 문자열 제거하기")
+    void subStringTest() {
+        String actual = "(1,2)";
+        String expected = "1,2";
+        String result = actual.substring(1, 4);
+
+        assertThat(expected).isEqualTo(result);
+    }
 }
