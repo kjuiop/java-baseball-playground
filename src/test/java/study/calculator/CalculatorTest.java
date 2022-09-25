@@ -1,8 +1,7 @@
-package study;
+package study.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -30,6 +29,6 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"5 + 3:true","2 * *:false"}, delimiter = ':')
     void isSuitableCalculatorTest(String element, boolean expected) {
-        assertThat(Calculator.isNotSuitableCalculator(element)).isEqualTo(expected);
+        assertThat(calculator.isNotSuitableCalculator(element)).isEqualTo(expected);
     }
 }
