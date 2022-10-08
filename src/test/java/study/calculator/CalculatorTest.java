@@ -46,4 +46,11 @@ class CalculatorTest {
         }).isInstanceOf(InvalidParameterException.class)
                 .hasMessageContaining("%s", "계산식에 적합하지 않습니다.");
     }
+
+    @DisplayName("더하기 연산을 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"5 + 3:8","2 + 4:6", "1 + 2 + 5:8"}, delimiter = ':')
+    void addTest(String element, int expected) {
+        assertThat(calculator.execute(element)).isEqualTo(expected);
+    }
 }

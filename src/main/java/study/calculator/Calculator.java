@@ -8,10 +8,52 @@ import java.security.InvalidParameterException;
  */
 public class Calculator {
 
-    public void execute(String str) {
+    public int execute(String str) {
 
         if (isNotSuitableCalculator(str)) {
             throw new InvalidParameterException("계산식에 적합하지 않습니다.");
+        }
+
+        return getResultValue(str);
+    }
+
+    public int getResultValue(String str) {
+
+        String[] values = str.split(" ");
+
+        int result = 0;
+        String operator = "";
+
+        for (int i=0; i<values.length; i++) {
+
+            if (i == 0) {
+                result = Integer.parseInt(values[i]);
+                continue;
+            }
+
+            if (i % 2 == 1) {
+                operator = values[i];
+                continue;
+            }
+
+            result =  calculate(result, operator, Integer.parseInt(values[i]));
+        }
+
+        return result;
+    }
+
+    public int calculate(int a, String operator, int b) {
+        switch (operator) {
+            case "+" :
+                return add(a, b);
+            case "-" :
+                return minus(a, b);
+            case "*" :
+                return multiply(a,b);
+            case "/" :
+                return divide(a,b);
+            default:
+                return 0;
         }
     }
 
@@ -57,5 +99,21 @@ public class Calculator {
         } catch(NumberFormatException ne) {
             return false;
         }
+    }
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int minus(int a, int b) {
+        return a - b;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public int divide(int a, int b) {
+        return a / b;
     }
 }
