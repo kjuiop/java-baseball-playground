@@ -54,14 +54,14 @@ class CalculatorTest {
         assertThat(calculator.execute(element)).isEqualTo(expected);
     }
 
-    @DisplayName("더하기 연산을 한다.")
+    @DisplayName("마이너스 연산을 한다.")
     @ParameterizedTest
     @CsvSource(value = {"5 - 3:2","2 - 4 - 5:-7", "9 - 0 - 2:7"}, delimiter = ':')
     void minusTest(String element, int expected) {
         assertThat(calculator.execute(element)).isEqualTo(expected);
     }
 
-    @DisplayName("더하기 연산을 한다.")
+    @DisplayName("곱하기 연산을 한다.")
     @ParameterizedTest
     @CsvSource(value = {"5 * 3:15","2 * 4 * 5:40", "9 * 0 * 1:0"}, delimiter = ':')
     void multiplyTest(String element, int expected) {
