@@ -85,4 +85,11 @@ class CalculatorTest {
         }).isInstanceOf(InvalidParameterException.class)
                 .hasMessageContaining("%s", "0으로 나눌 수 없습니다.");
     }
+
+    @DisplayName("다중 연산을 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"5 * 3 / 15 + 5:6", "3 + 9 / 6 * 2:4"}, delimiter = ':')
+    void multipleOperationTest(String element, int expected) {
+        assertThat(calculator.execute(element)).isEqualTo(expected);
+    }
 }
