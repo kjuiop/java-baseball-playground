@@ -2,10 +2,13 @@ package study.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.security.InvalidParameterException;
+
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author : JAKE
@@ -27,8 +30,8 @@ class CalculatorTest {
 
     @DisplayName("문자를 입력했을 때 해당 문자가 계산가능한지 판별한다.")
     @ParameterizedTest
-    @CsvSource(value = {"5 + 3:true","2 * *:false"}, delimiter = ':')
-    void isSuitableCalculatorTest(String element, boolean expected) {
+    @CsvSource(value = {"5 + 3:false","2 * *:true"}, delimiter = ':')
+    void isNotSuitableCalculatorTest(String element, boolean expected) {
         assertThat(calculator.isNotSuitableCalculator(element)).isEqualTo(expected);
     }
 }

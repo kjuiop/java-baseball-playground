@@ -18,7 +18,7 @@ public class Calculator {
     public boolean isNotSuitableCalculator(String str) {
 
         if (str.length() == 0) {
-            return false;
+            return true;
         }
 
         String[] values = str.split(" ");
@@ -27,17 +27,17 @@ public class Calculator {
 
             if (i % 2 == 0) {
                 if (!isNumeric(values[i])) {
-                    return false;
+                    return true;
                 }
                 continue;
             }
 
             if (!isOperator(values[i])) {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public boolean isOperator(String operator) {
