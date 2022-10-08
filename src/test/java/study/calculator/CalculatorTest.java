@@ -53,4 +53,11 @@ class CalculatorTest {
     void addTest(String element, int expected) {
         assertThat(calculator.execute(element)).isEqualTo(expected);
     }
+
+    @DisplayName("더하기 연산을 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"5 - 3:2","2 - 4 - 5:-7", "9 - 0 - 2:7"}, delimiter = ':')
+    void minusTest(String element, int expected) {
+        assertThat(calculator.execute(element)).isEqualTo(expected);
+    }
 }
