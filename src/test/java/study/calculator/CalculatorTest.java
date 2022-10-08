@@ -74,4 +74,15 @@ class CalculatorTest {
     void divideTest(String element, int expected) {
         assertThat(calculator.execute(element)).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("0으로 나눌 수 없습니다.")
+    void divideCalculatorErrorTest() {
+        String input = "5 / 0";
+
+        assertThatThrownBy(() -> {
+            calculator.execute(input);
+        }).isInstanceOf(InvalidParameterException.class)
+                .hasMessageContaining("%s", "0으로 나눌 수 없습니다.");
+    }
 }
