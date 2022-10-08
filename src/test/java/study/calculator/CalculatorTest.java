@@ -34,4 +34,16 @@ class CalculatorTest {
     void isNotSuitableCalculatorTest(String element, boolean expected) {
         assertThat(calculator.isNotSuitableCalculator(element)).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("계산이 불가능한 문자를 입력했을 때 예외를 발생시킨다.")
+    void isNotSuitableCalculateExceptionTest() {
+
+        String input = "2 * *";
+
+        assertThatThrownBy(() -> {
+            calculator.execute(input);
+        }).isInstanceOf(InvalidParameterException.class)
+                .hasMessageContaining("%s", "계산식에 적합하지 않습니다.");
+    }
 }
