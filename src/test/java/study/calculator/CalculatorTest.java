@@ -67,4 +67,11 @@ class CalculatorTest {
     void multiplyTest(String element, int expected) {
         assertThat(calculator.execute(element)).isEqualTo(expected);
     }
+
+    @DisplayName("나누기 연산을 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"9 / 3:3","5 / 1:5", "12 / 6 / 2:1"}, delimiter = ':')
+    void divideTest(String element, int expected) {
+        assertThat(calculator.execute(element)).isEqualTo(expected);
+    }
 }
